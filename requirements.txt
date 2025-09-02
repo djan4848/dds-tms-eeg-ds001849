@@ -1,0 +1,19 @@
+# Core scientific stack
+numpy==1.26.4
+scipy==1.15.2
+pandas==2.1.4
+
+# Plotting
+matplotlib==3.10.1
+seaborn==0.12.2
+
+# Stats
+statsmodels==0.13.5
+
+# EEG / BIDS
+mne==1.10.0
+mne-bids==0.14
+
+# Notebooks
+jupyter==1.0.0
+

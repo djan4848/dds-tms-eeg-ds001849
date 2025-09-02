@@ -1,0 +1,8 @@
+@article{jan2025dds,
+  author  = {Damián Jan},
+  title   = {A Dual Damped Sine (DDS) model for TMS–EEG: parametric validation against cosine similarity on OpenNeuro ds001849},
+  journal = {Journal of Neuroscience Methods},
+  year    = {2025},
+  note    = {submitted}
+}
+
