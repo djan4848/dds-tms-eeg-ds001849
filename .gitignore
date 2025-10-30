@@ -1,22 +1,11 @@
-# Python
 __pycache__/
-*.py[cod]
-*.egg-info/
+*.pyc
+*.pyo
+*.DS_Store
 .env
-.venv/
-
-# Jupyter
+.venv
+.eggs/
+build/
+dist/
+*.egg-info/
 .ipynb_checkpoints/
-
-# OS/editor
-.DS_Store
-.vscode/
-.idea/
-
-# Derivatives pesados
-derivatives/
-*.npy
-*.npz
-*.csv
-*.png
-*.pdf
