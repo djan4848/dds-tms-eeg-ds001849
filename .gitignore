@@ -9,3 +9,10 @@ build/
 dist/
 *.egg-info/
 .ipynb_checkpoints/
+derivatives/
+stats_results/
+ddstms/
+*.log
+*.fif
+*.set
+*.fdt
