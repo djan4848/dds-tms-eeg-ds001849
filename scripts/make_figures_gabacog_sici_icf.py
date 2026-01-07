@@ -245,13 +245,13 @@ def fig4_between_roi_sici_gamma1(df_roi: pd.DataFrame, outdir: Path, rois: list[
       CTL vs OCD in gamma1, across selected ROIs.
     Shows mean ± 95% CI + Cohen's d + Welch p (uncorrected; stats in CSV handle FDR).
     """
-    d = df_roi[(df_roi["protocol"]=="SICI") & (df_roi["group"].isin(["CTL","OCD"]))].copy()
-
+    d = df_roi[(df_roi["protocol"]=="SICI") & (df_roi["group"].isin(["CTL","TOC"]))].copy()
+   
     plt.figure(figsize=(12, 4))
     for i, roi in enumerate(rois, start=1):
         sub = d[d["roi"]==roi]
         x = sub[sub["group"]=="CTL"]["gamma1"].values
-        y = sub[sub["group"]=="OCD"]["gamma1"].values
+        y = sub[sub["group"]=="TOC"]["gamma1"].values
         t, p = ttest_ind(x, y, equal_var=False, nan_policy="omit")
         d_eff = cohens_d_independent(x, y)
 
@@ -288,13 +288,13 @@ def fig5_between_roi_icf_f2(df_roi: pd.DataFrame, outdir: Path, rois: list[str])
       CTL vs OCD in f2, across selected ROIs.
     Shows mean ± 95% CI + Cohen's d + Welch p (uncorrected).
     """
-    d = df_roi[(df_roi["protocol"]=="ICF") & (df_roi["group"].isin(["CTL","OCD"]))].copy()
+    d = df_roi[(df_roi["protocol"]=="ICF") & (df_roi["group"].isin(["CTL","TOC"]))].copy()
 
     plt.figure(figsize=(12, 4))
     for i, roi in enumerate(rois, start=1):
         sub = d[d["roi"]==roi]
         x = sub[sub["group"]=="CTL"]["f2"].values
-        y = sub[sub["group"]=="OCD"]["f2"].values
+        y = sub[sub["group"]=="TOC"]["f2"].values
         t, p = ttest_ind(x, y, equal_var=False, nan_policy="omit")
         d_eff = cohens_d_independent(x, y)
 
@@ -337,6 +337,7 @@ def main():
     outdir = ensure_dir(deriv_root / "figures_paper_A")
 
     df_ch, df_roi = load_csvs(deriv_root)
+    print(df_roi.tail())
 
     # Fig0: fit quality
     fig0_r2_hist(df_ch, outdir)
