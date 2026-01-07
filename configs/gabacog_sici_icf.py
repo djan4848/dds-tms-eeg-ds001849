@@ -34,6 +34,31 @@ BASELINE = (-0.5, 0.0)
 
 # ROI secundario (edítalo a tu gusto)
 ROI = {
-    "MOTOR_FC_C": ["FC3","FC1","FCz","C3","C1","Cz","CP3","CP1","CPz"]
+    "DLPFC_R": ["AF4","F4","F6","F2","FC4","FC6"],
+    "DLPFC_L": ["AF3","F3","F5","F1","FC3","FC5"],
+    "FRONTAL_MID": ["Fpz","Fz","FC1","FC2"],
+    "SENSORIMOTOR_L": ["C3","C1","C5","CP3","CP1","CP5"],
+    "SENSORIMOTOR_R": ["C4","C2","C6","CP4","CP2","CP6"],
+    "PARIETAL_MID": ["Pz","CPz","P1","P2","POz"],
+    "PARIETAL_L": ["P3","P5","P7","PO3","PO7"],
+    "PARIETAL_R": ["P4","P6","P8","PO4","PO8"],
+    "TEMPORAL": ["T7","T8","FT7","FT8","TP7","TP8"],
+    "OCCIPITAL": ["O1","O2","Oz","PO7","PO8"],
+    
+
+
+
+
+    # 1) Motor / peri-motor (ya lo tenías; sin FCz)
+    "MOTOR_FC_C": ["FC3","FC1","C3","C1","Cz","CP3","CP1","CPz"],
+
+    # 2) DLPFC izquierda (aprox. F3/FC3/AF3; incluyo F1/Fz como “dorsal” si están)
+    "DLPFC_L": ["AF3","F3","F5","F1","FC3","FC5"],
+
+    # 3) DLPFC derecha (simétrico)
+    "DLPFC_R": ["AF4","F4","F6","F2","FC4","FC6"],
+
+    # 4) Parietal medial (red más “posterior”; útil si hay efectos de red)
+    "PARIETAL_MID": ["Pz","CPz","P1","P2","CP1","CP2"],
 }
 
