@@ -204,7 +204,7 @@ def fig3_protocol_signatures_pooled(df_ch: pd.DataFrame, outdir: Path):
       - ICF:  f2 pooled over all channels/subjects
     Adds bootstrap 95% CI for the mean.
     """
-    d = df_ch[df_ch["group"].isin(["CTL","TOC"])].copy()
+    d = df_ch[df_ch["group"].isin(["CTL","OCD"])].copy()
 
     sici_g1 = d[(d.protocol=="SICI")]["gamma1"].dropna().values
     icf_f2  = d[(d.protocol=="ICF")]["f2"].dropna().values
@@ -242,16 +242,16 @@ def fig3_protocol_signatures_pooled(df_ch: pd.DataFrame, outdir: Path):
 def fig4_between_roi_sici_gamma1(df_roi: pd.DataFrame, outdir: Path, rois: list[str]):
     """
     Main negative-result figure (SICI):
-      CTL vs TOC in gamma1, across selected ROIs.
+      CTL vs OCD in gamma1, across selected ROIs.
     Shows mean ± 95% CI + Cohen's d + Welch p (uncorrected; stats in CSV handle FDR).
     """
-    d = df_roi[(df_roi["protocol"]=="SICI") & (df_roi["group"].isin(["CTL","TOC"]))].copy()
+    d = df_roi[(df_roi["protocol"]=="SICI") & (df_roi["group"].isin(["CTL","OCD"]))].copy()
 
     plt.figure(figsize=(12, 4))
     for i, roi in enumerate(rois, start=1):
         sub = d[d["roi"]==roi]
         x = sub[sub["group"]=="CTL"]["gamma1"].values
-        y = sub[sub["group"]=="TOC"]["gamma1"].values
+        y = sub[sub["group"]=="OCD"]["gamma1"].values
         t, p = ttest_ind(x, y, equal_var=False, nan_policy="omit")
         d_eff = cohens_d_independent(x, y)
 
@@ -261,21 +261,21 @@ def fig4_between_roi_sici_gamma1(df_roi: pd.DataFrame, outdir: Path, rois: list[
         plt.subplot(1, len(rois), i)
         # group points
         plt.scatter(np.zeros_like(x), x, s=18, alpha=0.7, label="CTL" if i == 1 else None)
-        plt.scatter(np.ones_like(y),  y, s=18, alpha=0.7, label="TOC" if i == 1 else None)
+        plt.scatter(np.ones_like(y),  y, s=18, alpha=0.7, label="OCD" if i == 1 else None)
 
         # CI bars
         plt.errorbar([0,1], [m_x, m_y],
                      yerr=[[m_x-lo_x, m_y-lo_y], [hi_x-m_x, hi_y-m_y]],
                      fmt='o', color='black', capsize=6, linewidth=2, label="Mean ± 95% CI" if i == 1 else None)
 
-        plt.xticks([0,1], ["CTL","TOC"])
+        plt.xticks([0,1], ["CTL","OCD"])
         plt.title(f"{roi}\nWelch p={p:.3g}, d={d_eff:.2f}\nN={nx}/{ny}")
         plt.ylabel("γ₁ (s⁻¹)")
 
-    plt.suptitle("SICI: between-group (CTL vs TOC) in γ₁ across ROIs")
+    plt.suptitle("SICI: between-group (CTL vs OCD) in γ₁ across ROIs")
     plt.legend(loc="best")
     plt.tight_layout(rect=[0,0,1,0.92])
-    plt.savefig(outdir / "Fig4_between_ROI_SICI_gamma1_CTL_vs_TOC.png", dpi=300)
+    plt.savefig(outdir / "Fig4_between_ROI_SICI_gamma1_CTL_vs_OCD.png", dpi=300)
     plt.close()
 
 
@@ -285,16 +285,16 @@ def fig4_between_roi_sici_gamma1(df_roi: pd.DataFrame, outdir: Path, rois: list[
 def fig5_between_roi_icf_f2(df_roi: pd.DataFrame, outdir: Path, rois: list[str]):
     """
     Main negative-result figure (ICF):
-      CTL vs TOC in f2, across selected ROIs.
+      CTL vs OCD in f2, across selected ROIs.
     Shows mean ± 95% CI + Cohen's d + Welch p (uncorrected).
     """
-    d = df_roi[(df_roi["protocol"]=="ICF") & (df_roi["group"].isin(["CTL","TOC"]))].copy()
+    d = df_roi[(df_roi["protocol"]=="ICF") & (df_roi["group"].isin(["CTL","OCD"]))].copy()
 
     plt.figure(figsize=(12, 4))
     for i, roi in enumerate(rois, start=1):
         sub = d[d["roi"]==roi]
         x = sub[sub["group"]=="CTL"]["f2"].values
-        y = sub[sub["group"]=="TOC"]["f2"].values
+        y = sub[sub["group"]=="OCD"]["f2"].values
         t, p = ttest_ind(x, y, equal_var=False, nan_policy="omit")
         d_eff = cohens_d_independent(x, y)
 
@@ -303,20 +303,20 @@ def fig5_between_roi_icf_f2(df_roi: pd.DataFrame, outdir: Path, rois: list[str])
 
         plt.subplot(1, len(rois), i)
         plt.scatter(np.zeros_like(x), x, s=18, alpha=0.7, label="CTL" if i == 1 else None)
-        plt.scatter(np.ones_like(y),  y, s=18, alpha=0.7, label="TOC" if i == 1 else None)
+        plt.scatter(np.ones_like(y),  y, s=18, alpha=0.7, label="OCD" if i == 1 else None)
 
         plt.errorbar([0,1], [m_x, m_y],
                      yerr=[[m_x-lo_x, m_y-lo_y], [hi_x-m_x, hi_y-m_y]],
                      fmt='o', color='black', capsize=6, linewidth=2, label="Mean ± 95% CI" if i == 1 else None)
 
-        plt.xticks([0,1], ["CTL","TOC"])
+        plt.xticks([0,1], ["CTL","OCD"])
         plt.title(f"{roi}\nWelch p={p:.3g}, d={d_eff:.2f}\nN={nx}/{ny}")
         plt.ylabel("f₂ (Hz)")
 
-    plt.suptitle("ICF: between-group (CTL vs TOC) in f₂ across ROIs")
+    plt.suptitle("ICF: between-group (CTL vs OCD) in f₂ across ROIs")
     plt.legend(loc="best")
     plt.tight_layout(rect=[0,0,1,0.92])
-    plt.savefig(outdir / "Fig5_between_ROI_ICF_f2_CTL_vs_TOC.png", dpi=300)
+    plt.savefig(outdir / "Fig5_between_ROI_ICF_f2_CTL_vs_OCD.png", dpi=300)
     plt.close()
 
 
