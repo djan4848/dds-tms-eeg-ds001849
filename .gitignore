@@ -16,3 +16,14 @@ ddstms/
 *.fif
 *.set
 *.fdt
+
+# ---- Local data & artifacts (do not version) ----
+data/
+outputs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs
+*.log
