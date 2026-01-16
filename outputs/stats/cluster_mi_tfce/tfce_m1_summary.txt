@@ -1,0 +1,8 @@
+n_subjects=20 n_channels=30
+n_permutations=5000 tfce={'start': 0.0, 'step': -0.2} tail=-1
+clusters_total=30
+best_cluster_id=3
+best_cluster_p=0.0016
+best_cluster_n_channels=1
+best_cluster_channels=CP2
+max_abs_T_obs=0.9016

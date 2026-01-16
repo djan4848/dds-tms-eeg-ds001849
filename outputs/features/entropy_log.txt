@@ -1,0 +1,21 @@
+[20/240] processed
+[40/240] processed
+[60/240] processed
+[80/240] processed
+[100/240] processed
+[120/240] processed
+[140/240] processed
+[160/240] processed
+[180/240] processed
+[200/240] processed
+[220/240] processed
+[240/240] processed
+[OK] wrote: outputs/features/info_entropy.csv rows=240
+[OK] wrote: outputs/features/dds_plus_entropy.csv rows=240 cols=26
+[OK] entropy availability: 100.0%
+        count      mean       std  ...       50%       75%       max
+window                             ...                              
+early   120.0  2.612330  0.091129  ...  2.608288  2.645826  2.983420
+late    120.0  2.870689  0.075908  ...  2.877748  2.891609  3.284399
+
+[2 rows x 8 columns]
