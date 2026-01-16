@@ -1,5 +1,0 @@
-[OK] wrote: outputs/stats/mi_channelwise_active_minus_sham.csv
-Top hits (q_t_site <= 0.05):
-Empty DataFrame
-Columns: [site, channel, n_subjects, mean_diff_active_minus_sham, median_diff_active_minus_sham, t, p_t, W, p_wilcoxon, q_t_site, q_t_global]
-Index: []

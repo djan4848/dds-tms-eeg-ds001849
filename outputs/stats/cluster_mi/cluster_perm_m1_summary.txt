@@ -1,7 +1,0 @@
-n_subjects=20 n_channels=30
-n_permutations=5000 two_sided=False
-max|T_obs|=1.8671
-clusters_total=2
-clusters_sig(p<=0.05)=0
-
-No significant clusters at alpha=0.05

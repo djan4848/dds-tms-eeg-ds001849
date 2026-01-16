@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/media/neuraldyn/PortableSSD/DDS_Information_theory/repository/dds-tms-eeg-ds001849/scripts/run_dds_from_evokeds_new.py", line 780, in <module>
-    main()
-  File "/media/neuraldyn/PortableSSD/DDS_Information_theory/repository/dds-tms-eeg-ds001849/scripts/run_dds_from_evokeds_new.py", line 617, in main
-    window_config = WINDOW_CONFIG[args.window]
-KeyError: 'all'
